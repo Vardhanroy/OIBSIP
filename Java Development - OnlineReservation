@@ -1,0 +1,93 @@
+import java.util.Scanner;
+
+class OnlineReservationSystem {
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        int choice;
+
+        do {
+            System.out.println("Online Reservation System");
+            System.out.println("1. Login");
+            System.out.println("2. Reservation System");
+            System.out.println("3. Cancellation Form");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    login();
+                    break;
+                case 2:
+                    reservationSystem();
+                    break;
+                case 3:
+                    cancellationForm();
+                    break;
+                case 4:
+                    System.out.println("Exiting the system. Thank you!");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        } while (choice != 4);
+    }
+
+    private static void login() {
+        System.out.println("Login Form");
+        System.out.print("Enter your login id: ");
+        String loginId = scanner.next();
+        System.out.print("Enter your password: ");
+        String password = scanner.next();
+
+        // This is just for the reference, we can also connect this to our database for verification
+        if (!loginId.isEmpty() && !password.isEmpty()) {
+            System.out.println("Login successful!");
+        } else {
+            System.out.println("Invalid login credentials. Please try again.");
+        }
+    }
+
+    private static void reservationSystem() {
+        System.out.println("Reservation System");
+        System.out.print("Enter your basic details: ");
+        String basicDetails = scanner.next();
+        System.out.print("Enter train number: ");
+        int trainNumber = scanner.nextInt();
+        // we can also write code to show the train names here.
+        String trainName = "Sample Train"; // we can write any name here. This is name I gave for it.
+        System.out.println("Train Name: " + trainName);
+        System.out.print("Enter class type: ");
+        String classType = scanner.next();
+        System.out.print("Enter date of journey: ");
+        String dateOfJourney = scanner.next();
+        System.out.print("Enter source (from): ");
+        String source = scanner.next();
+        System.out.print("Enter destination: ");
+        String destination = scanner.next();
+
+        System.out.println("Reservation details inserted successfully!");
+    }
+
+    private static void cancellationForm() {
+        System.out.println("Cancellation Form");
+        System.out.print("Enter PNR number: ");
+        String pnrNumber = scanner.next();
+
+        if (!pnrNumber.isEmpty()) {
+            System.out.println("Details for PNR number " + pnrNumber + ":");
+            // Display relevant details
+            System.out.print("Do you want to confirm cancellation? (Enter 'OK' to confirm): ");
+            String confirm = scanner.next();
+            if (confirm.equalsIgnoreCase("OK")) {
+                System.out.println("Reservation cancelled successfully!");
+            } else {
+                System.out.println("Cancellation not confirmed.");
+            }
+        } else {
+            System.out.println("Invalid PNR number. Please try again.");
+        }
+    }
+}
+
